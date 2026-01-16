@@ -1,0 +1,9 @@
+fragment OptiFormsContainerDataData on OptiFormsContainerData {
+  DependencyRules { ...OptiFormsDependencyRulePropertyData }
+  Title
+  Description
+  ShowSummaryMessageAfterSubmission
+  SubmitConfirmationMessage
+  ResetConfirmationMessage
+  SubmitUrl { ...LinkData }
+}

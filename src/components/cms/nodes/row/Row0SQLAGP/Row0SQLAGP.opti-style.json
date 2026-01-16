@@ -1,0 +1,54 @@
+{
+  "key": "Row0SQLAGP",
+  "displayName": "Row0 Gleichner, Rath and Sipes",
+  "nodeType": "row",
+  "isDefault": true,
+  "settings": {
+    "border_style_row": {
+      "displayName": "Border style for row",
+      "editor": "select",
+      "sortOrder": 0,
+      "choices": {
+        "solid": {
+          "displayName": "Solid line",
+          "sortOrder": 0
+        },
+        "dotted": {
+          "displayName": "Dotted line",
+          "sortOrder": 0
+        },
+        "double": {
+          "displayName": "Doubled line",
+          "sortOrder": 0
+        },
+        "dashed": {
+          "displayName": "Dash line",
+          "sortOrder": 0
+        }
+      }
+    },
+    "border_width_row": {
+      "displayName": "Border width for row",
+      "editor": "select",
+      "sortOrder": 0,
+      "choices": {
+        "thin": {
+          "displayName": "Thin",
+          "sortOrder": 0
+        },
+        "thick": {
+          "displayName": "Thick",
+          "sortOrder": 0
+        },
+        "none": {
+          "displayName": "No border",
+          "sortOrder": 0
+        },
+        "medium": {
+          "displayName": "Medium",
+          "sortOrder": 0
+        }
+      }
+    }
+  }
+}

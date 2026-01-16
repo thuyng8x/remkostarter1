@@ -1,0 +1,14 @@
+{
+  "key": "ThuyBlock",
+  "displayName": "ThuyBlock",
+  "description": "",
+  "baseType": "component",
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [
+    "sectionEnabled",
+    "elementEnabled"
+  ],
+  "properties": {}
+}

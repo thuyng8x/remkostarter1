@@ -1,0 +1,4 @@
+fragment ThuySectionData on ThuySection {
+  Name
+  Body { json, html }
+}

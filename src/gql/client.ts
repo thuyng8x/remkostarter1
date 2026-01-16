@@ -2,6 +2,19 @@ import type * as Schema from "./graphql";
 import type { GraphQLClient, RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
 type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
+export const CompositionNodeDataFragmentDoc = gql`
+    fragment CompositionNodeData on ICompositionNode {
+  name: displayName
+  layoutType: nodeType
+  type
+  key
+  template: displayTemplateKey
+  settings: displaySettings {
+    key
+    value
+  }
+}
+    `;
 export const LinkDataFragmentDoc = gql`
     fragment LinkData on ContentUrl {
   type
@@ -29,37 +42,6 @@ export const IContentDataFragmentDoc = gql`
   _type: __typename
 }
     `;
-export const PageDataFragmentDoc = gql`
-    fragment PageData on _IContent {
-  ...IContentData
-}
-    `;
-export const ReferenceDataFragmentDoc = gql`
-    fragment ReferenceData on ContentReference {
-  key
-  url {
-    ...LinkData
-  }
-}
-    `;
-export const IContentListItemFragmentDoc = gql`
-    fragment IContentListItem on _IContent {
-  ...IContentData
-}
-    `;
-export const CompositionNodeDataFragmentDoc = gql`
-    fragment CompositionNodeData on ICompositionNode {
-  name: displayName
-  layoutType: nodeType
-  type
-  key
-  template: displayTemplateKey
-  settings: displaySettings {
-    key
-    value
-  }
-}
-    `;
 export const BlockDataFragmentDoc = gql`
     fragment BlockData on _IComponent {
   ...IContentData
@@ -78,11 +60,142 @@ export const ElementDataFragmentDoc = gql`
   ...IElementData
 }
     `;
+export const OptiFormsChoiceElementDataFragmentDoc = gql`
+    fragment OptiFormsChoiceElementData on OptiFormsChoiceElement {
+  Label
+  Tooltip
+  Options
+  AllowMultiSelect
+  Validators
+}
+    `;
+export const OptiFormsConditionDataFragmentDoc = gql`
+    fragment OptiFormsConditionData on OptiFormsCondition {
+  ComparisonOperator
+  ComparisonValue
+}
+    `;
+export const OptiFormsConditionPropertyDataFragmentDoc = gql`
+    fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {
+  ComparisonOperator
+  ComparisonValue
+}
+    `;
+export const OptiFormsDependencyRuleDataFragmentDoc = gql`
+    fragment OptiFormsDependencyRuleData on OptiFormsDependencyRule {
+  SatisfiedAction
+  ConditionCombination
+  Conditions {
+    ...OptiFormsConditionPropertyData
+  }
+}
+    `;
+export const OptiFormsNumberElementDataFragmentDoc = gql`
+    fragment OptiFormsNumberElementData on OptiFormsNumberElement {
+  Label
+  Placeholder
+  Tooltip
+  PredefinedValue
+  Validators
+  AutoComplete
+}
+    `;
+export const OptiFormsRangeElementDataFragmentDoc = gql`
+    fragment OptiFormsRangeElementData on OptiFormsRangeElement {
+  Label
+  Tooltip
+  PredefinedValue
+  Min
+  Max
+  Increment
+}
+    `;
+export const OptiFormsResetElementDataFragmentDoc = gql`
+    fragment OptiFormsResetElementData on OptiFormsResetElement {
+  Label
+  Tooltip
+}
+    `;
+export const OptiFormsSelectionElementDataFragmentDoc = gql`
+    fragment OptiFormsSelectionElementData on OptiFormsSelectionElement {
+  Label
+  Placeholder
+  Tooltip
+  Options
+  AllowMultiSelect
+  Validators
+  AutoComplete
+}
+    `;
+export const OptiFormsSubmitElementDataFragmentDoc = gql`
+    fragment OptiFormsSubmitElementData on OptiFormsSubmitElement {
+  Label
+  Tooltip
+}
+    `;
+export const OptiFormsTextareaElementDataFragmentDoc = gql`
+    fragment OptiFormsTextareaElementData on OptiFormsTextareaElement {
+  Label
+  Placeholder
+  Tooltip
+  PredefinedValue
+  Validators
+  AutoComplete
+}
+    `;
+export const OptiFormsTextboxElementDataFragmentDoc = gql`
+    fragment OptiFormsTextboxElementData on OptiFormsTextboxElement {
+  Label
+  Placeholder
+  Tooltip
+  PredefinedValue
+  Validators
+  AutoComplete
+}
+    `;
+export const OptiFormsUrlElementDataFragmentDoc = gql`
+    fragment OptiFormsUrlElementData on OptiFormsUrlElement {
+  Label
+  Placeholder
+  Tooltip
+  PredefinedValue
+  Validators
+}
+    `;
+export const ThuyBlockDataFragmentDoc = gql`
+    fragment ThuyBlockData on ThuyBlock {
+  empty: _metadata {
+    key
+  }
+}
+    `;
+export const ThuySectionDataFragmentDoc = gql`
+    fragment ThuySectionData on ThuySection {
+  Name
+  Body {
+    json
+    html
+  }
+}
+    `;
 export const CompositionComponentNodeDataFragmentDoc = gql`
     fragment CompositionComponentNodeData on ICompositionComponentNode {
   component {
     ...BlockData
     ...ElementData
+    ...OptiFormsChoiceElementData
+    ...OptiFormsConditionData
+    ...OptiFormsDependencyRuleData
+    ...OptiFormsNumberElementData
+    ...OptiFormsRangeElementData
+    ...OptiFormsResetElementData
+    ...OptiFormsSelectionElementData
+    ...OptiFormsSubmitElementData
+    ...OptiFormsTextareaElementData
+    ...OptiFormsTextboxElementData
+    ...OptiFormsUrlElementData
+    ...ThuyBlockData
+    ...ThuySectionData
   }
 }
     `;
@@ -119,14 +232,64 @@ export const ExperienceDataFragmentDoc = gql`
   }
 }
     `;
-export const LinkItemDataFragmentDoc = gql`
-    fragment LinkItemData on Link {
-  title
-  text
-  target
-  url {
+export const BlankExperienceDataFragmentDoc = gql`
+    fragment BlankExperienceData on BlankExperience {
+  ...ExperienceData
+}
+    `;
+export const ImageMediaDataFragmentDoc = gql`
+    fragment ImageMediaData on ImageMedia {
+  empty: _metadata {
+    key
+  }
+}
+    `;
+export const GenericMediaDataFragmentDoc = gql`
+    fragment GenericMediaData on GenericMedia {
+  empty: _metadata {
+    key
+  }
+}
+    `;
+export const OptiFormsDependencyRulePropertyDataFragmentDoc = gql`
+    fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {
+  SatisfiedAction
+  ConditionCombination
+  Conditions {
+    ...OptiFormsConditionPropertyData
+  }
+}
+    `;
+export const OptiFormsContainerDataDataFragmentDoc = gql`
+    fragment OptiFormsContainerDataData on OptiFormsContainerData {
+  DependencyRules {
+    ...OptiFormsDependencyRulePropertyData
+  }
+  Title
+  Description
+  ShowSummaryMessageAfterSubmission
+  SubmitConfirmationMessage
+  ResetConfirmationMessage
+  SubmitUrl {
     ...LinkData
   }
+}
+    `;
+export const VideoMediaDataFragmentDoc = gql`
+    fragment VideoMediaData on VideoMedia {
+  empty: _metadata {
+    key
+  }
+}
+    `;
+export const PageDataFragmentDoc = gql`
+    fragment PageData on _IContent {
+  ...IContentData
+}
+    `;
+export const IContentListItemFragmentDoc = gql`
+    fragment IContentListItem on _IContent {
+  ...IContentData
 }
     `;
 export const getContentByIdDocument = gql`
@@ -141,6 +304,20 @@ export const getContentByIdDocument = gql`
       ...IContentData
       ...BlockData
       ...PageData
+      ...OptiFormsChoiceElementData
+      ...OptiFormsConditionData
+      ...OptiFormsDependencyRuleData
+      ...OptiFormsNumberElementData
+      ...OptiFormsRangeElementData
+      ...OptiFormsResetElementData
+      ...OptiFormsSelectionElementData
+      ...OptiFormsSubmitElementData
+      ...OptiFormsTextareaElementData
+      ...OptiFormsTextboxElementData
+      ...OptiFormsUrlElementData
+      ...ThuyBlockData
+      ...ThuySectionData
+      ...BlankExperienceData
     }
   }
 }
@@ -148,7 +325,27 @@ export const getContentByIdDocument = gql`
 ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
 ${BlockDataFragmentDoc}
-${PageDataFragmentDoc}`;
+${PageDataFragmentDoc}
+${OptiFormsChoiceElementDataFragmentDoc}
+${OptiFormsConditionDataFragmentDoc}
+${OptiFormsDependencyRuleDataFragmentDoc}
+${OptiFormsConditionPropertyDataFragmentDoc}
+${OptiFormsNumberElementDataFragmentDoc}
+${OptiFormsRangeElementDataFragmentDoc}
+${OptiFormsResetElementDataFragmentDoc}
+${OptiFormsSelectionElementDataFragmentDoc}
+${OptiFormsSubmitElementDataFragmentDoc}
+${OptiFormsTextareaElementDataFragmentDoc}
+${OptiFormsTextboxElementDataFragmentDoc}
+${OptiFormsUrlElementDataFragmentDoc}
+${ThuyBlockDataFragmentDoc}
+${ThuySectionDataFragmentDoc}
+${BlankExperienceDataFragmentDoc}
+${ExperienceDataFragmentDoc}
+${CompositionNodeDataFragmentDoc}
+${CompositionComponentNodeDataFragmentDoc}
+${ElementDataFragmentDoc}
+${IElementDataFragmentDoc}`;
 export const getContentByPathDocument = gql`
     query getContentByPath($path: [String!]!, $locale: [Locales!], $siteId: String, $changeset: String = null) {
   content: _Content(
@@ -159,13 +356,35 @@ export const getContentByPathDocument = gql`
     items: item {
       ...IContentData
       ...PageData
+      ...BlankExperienceData
     }
   }
 }
     ${IContentDataFragmentDoc}
 ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
-${PageDataFragmentDoc}`;
+${PageDataFragmentDoc}
+${BlankExperienceDataFragmentDoc}
+${ExperienceDataFragmentDoc}
+${CompositionNodeDataFragmentDoc}
+${CompositionComponentNodeDataFragmentDoc}
+${BlockDataFragmentDoc}
+${ElementDataFragmentDoc}
+${IElementDataFragmentDoc}
+${OptiFormsChoiceElementDataFragmentDoc}
+${OptiFormsConditionDataFragmentDoc}
+${OptiFormsDependencyRuleDataFragmentDoc}
+${OptiFormsConditionPropertyDataFragmentDoc}
+${OptiFormsNumberElementDataFragmentDoc}
+${OptiFormsRangeElementDataFragmentDoc}
+${OptiFormsResetElementDataFragmentDoc}
+${OptiFormsSelectionElementDataFragmentDoc}
+${OptiFormsSubmitElementDataFragmentDoc}
+${OptiFormsTextareaElementDataFragmentDoc}
+${OptiFormsTextboxElementDataFragmentDoc}
+${OptiFormsUrlElementDataFragmentDoc}
+${ThuyBlockDataFragmentDoc}
+${ThuySectionDataFragmentDoc}`;
 export const getContentTypeDocument = gql`
     query getContentType($key: String!, $version: String, $locale: [Locales!], $path: String = "-", $domain: String) {
   content: _Content(

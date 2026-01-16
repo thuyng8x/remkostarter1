@@ -1,0 +1,5 @@
+fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {
+  SatisfiedAction
+  ConditionCombination
+  Conditions { ...OptiFormsConditionPropertyData }
+}

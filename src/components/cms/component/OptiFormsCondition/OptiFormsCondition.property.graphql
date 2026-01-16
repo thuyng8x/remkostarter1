@@ -1,0 +1,4 @@
+fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {
+  ComparisonOperator
+  ComparisonValue
+}

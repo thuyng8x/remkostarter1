@@ -1,0 +1,54 @@
+{
+  "key": "Column0GBPCI",
+  "displayName": "Column0 O'Conner - Streich",
+  "nodeType": "column",
+  "isDefault": true,
+  "settings": {
+    "border_style_Column": {
+      "displayName": "Border style for Column",
+      "editor": "select",
+      "sortOrder": 0,
+      "choices": {
+        "solid": {
+          "displayName": "Solid line",
+          "sortOrder": 0
+        },
+        "dotted": {
+          "displayName": "Dotted line",
+          "sortOrder": 0
+        },
+        "double": {
+          "displayName": "Doubled line",
+          "sortOrder": 0
+        },
+        "dashed": {
+          "displayName": "Dash line",
+          "sortOrder": 0
+        }
+      }
+    },
+    "border_width_Column": {
+      "displayName": "Border width for Column",
+      "editor": "select",
+      "sortOrder": 0,
+      "choices": {
+        "thin": {
+          "displayName": "Thin",
+          "sortOrder": 0
+        },
+        "thick": {
+          "displayName": "Thick",
+          "sortOrder": 0
+        },
+        "none": {
+          "displayName": "No border",
+          "sortOrder": 0
+        },
+        "medium": {
+          "displayName": "Medium",
+          "sortOrder": 0
+        }
+      }
+    }
+  }
+}

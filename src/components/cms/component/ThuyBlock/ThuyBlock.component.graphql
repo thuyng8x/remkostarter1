@@ -1,0 +1,3 @@
+fragment ThuyBlockData on ThuyBlock {
+  empty: _metadata { key }
+}

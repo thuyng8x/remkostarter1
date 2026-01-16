@@ -14,10 +14,50 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
+    "fragment OptiFormsChoiceElementData on OptiFormsChoiceElement {\n  Label\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n}": typeof types.OptiFormsChoiceElementDataFragmentDoc,
+    "fragment OptiFormsConditionData on OptiFormsCondition {\n  ComparisonOperator\n  ComparisonValue\n}": typeof types.OptiFormsConditionDataFragmentDoc,
+    "fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {\n  ComparisonOperator\n  ComparisonValue\n}": typeof types.OptiFormsConditionPropertyDataFragmentDoc,
+    "fragment OptiFormsDependencyRuleData on OptiFormsDependencyRule {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}": typeof types.OptiFormsDependencyRuleDataFragmentDoc,
+    "fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}": typeof types.OptiFormsDependencyRulePropertyDataFragmentDoc,
+    "fragment OptiFormsNumberElementData on OptiFormsNumberElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}": typeof types.OptiFormsNumberElementDataFragmentDoc,
+    "fragment OptiFormsRangeElementData on OptiFormsRangeElement {\n  Label\n  Tooltip\n  PredefinedValue\n  Min\n  Max\n  Increment\n}": typeof types.OptiFormsRangeElementDataFragmentDoc,
+    "fragment OptiFormsResetElementData on OptiFormsResetElement {\n  Label\n  Tooltip\n}": typeof types.OptiFormsResetElementDataFragmentDoc,
+    "fragment OptiFormsSelectionElementData on OptiFormsSelectionElement {\n  Label\n  Placeholder\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n  AutoComplete\n}": typeof types.OptiFormsSelectionElementDataFragmentDoc,
+    "fragment OptiFormsSubmitElementData on OptiFormsSubmitElement {\n  Label\n  Tooltip\n}": typeof types.OptiFormsSubmitElementDataFragmentDoc,
+    "fragment OptiFormsTextareaElementData on OptiFormsTextareaElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}": typeof types.OptiFormsTextareaElementDataFragmentDoc,
+    "fragment OptiFormsTextboxElementData on OptiFormsTextboxElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}": typeof types.OptiFormsTextboxElementDataFragmentDoc,
+    "fragment OptiFormsUrlElementData on OptiFormsUrlElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n}": typeof types.OptiFormsUrlElementDataFragmentDoc,
+    "fragment ThuyBlockData on ThuyBlock {\n  empty: _metadata {\n    key\n  }\n}": typeof types.ThuyBlockDataFragmentDoc,
+    "fragment ThuySectionData on ThuySection {\n  Name\n  Body {\n    json\n    html\n  }\n}": typeof types.ThuySectionDataFragmentDoc,
+    "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}": typeof types.BlankExperienceDataFragmentDoc,
+    "fragment ImageMediaData on ImageMedia {\n  empty: _metadata {\n    key\n  }\n}": typeof types.ImageMediaDataFragmentDoc,
+    "fragment GenericMediaData on GenericMedia {\n  empty: _metadata {\n    key\n  }\n}": typeof types.GenericMediaDataFragmentDoc,
+    "fragment OptiFormsContainerDataData on OptiFormsContainerData {\n  DependencyRules {\n    ...OptiFormsDependencyRulePropertyData\n  }\n  Title\n  Description\n  ShowSummaryMessageAfterSubmission\n  SubmitConfirmationMessage\n  ResetConfirmationMessage\n  SubmitUrl {\n    ...LinkData\n  }\n}": typeof types.OptiFormsContainerDataDataFragmentDoc,
+    "fragment VideoMediaData on VideoMedia {\n  empty: _metadata {\n    key\n  }\n}": typeof types.VideoMediaDataFragmentDoc,
     "fragment IContentData on _IContent\n{\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}\n\nfragment IElementData on _IComponent {\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}\n\nfragment ElementData on _IComponent  {\n  ...IElementData\n}\n\nfragment BlockData on _IComponent  {\n  ...IContentData\n}\n\nfragment PageData on _IContent {\n  ...IContentData\n}\n\nfragment LinkData on ContentUrl {\n  type\n  base\n  default\n}\n\nfragment ReferenceData on ContentReference {\n  key\n  url {\n    ...LinkData\n  }\n}\n\nfragment IContentInfo on IContentMetadata {\n  key\n  locale\n  types\n  displayName\n  version\n  url {\n    ...LinkData\n  }\n}\n\nfragment IContentListItem on _IContent {\n  ...IContentData\n}\n\nfragment ExperienceData on _IExperience {\n  composition {\n    # Experience level\n    ...CompositionNodeData\n    nodes {\n      # Section level\n      ...CompositionNodeData\n      ... on ICompositionStructureNode {\n        nodes {\n          # Row level\n          ...CompositionNodeData\n          ... on ICompositionStructureNode {\n            nodes {\n              # Column level\n              ...CompositionNodeData\n              ... on ICompositionStructureNode {\n                nodes {\n                  # Element level\n                  ...CompositionNodeData\n                  ...CompositionComponentNodeData\n                  ... on ICompositionStructureNode {\n                    nodes {\n                      # Form element level level\n                      ...CompositionNodeData\n                      ...CompositionComponentNodeData\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n      ...CompositionComponentNodeData\n    }\n  }\n}\n\nfragment CompositionNodeData on ICompositionNode {\n  name: displayName\n  layoutType: nodeType\n  type\n  key\n  template: displayTemplateKey\n  settings: displaySettings {\n    key\n    value\n  }\n}\n\nfragment CompositionComponentNodeData on ICompositionComponentNode {\n  component {\n    ...BlockData\n    ...ElementData\n  }\n}\n\nfragment LinkItemData on Link {\n  title\n  text\n  target\n  url {\n    ...LinkData\n  }\n}": typeof types.IContentDataFragmentDoc,
     "query getContentById($key: String!, $version: String, $locale: [Locales!], $path: String = \"-\", $domain: String, $changeset: String) {\n      content: _Content(\n        variation: { include: ALL }\n        where: {\n          _or: [\n            { _metadata: { key: { eq: $key }, version: { eq: $version } } }\n            {\n              _metadata: {\n                url: { default: { eq: $path }, base: { eq: $domain } }\n                version: { eq: $version }\n              }\n            }\n          ]\n          _metadata: { changeset: { eq: $changeset } }\n        }\n        locale: $locale\n      ) {\n        total\n        items: item {\n          ...IContentData\n          ...BlockData\n          ...PageData\n        }\n      }\n    }\n\nquery getContentByPath($path: [String!]!, $locale: [Locales!], $siteId: String, $changeset: String = null) {\n      content: _Content(\n        where: {\n          _metadata: {\n            url: { default: { in: $path }, base: { eq: $siteId } }\n            changeset: { eq: $changeset }\n          }\n        }\n        locale: $locale\n      ) {\n        total\n        items: item {\n          ...IContentData\n          ...PageData\n        }\n      }\n    }\n\nquery getContentType($key: String!, $version: String, $locale: [Locales!], $path: String = \"-\", $domain: String) {\n        content: _Content(\n            variation: { include: ALL }\n            where: {\n                _or: [\n                    { _metadata: { key: { eq: $key }, version: { eq: $version } } }\n                    { _metadata: { url: { hierarchical: { eq: $path }, base: { eq: $domain } }, version: { eq: $version } } }\n                ]\n            }\n            locale: $locale\n        ) {\n            total\n            items: item {\n                _metadata {\n                    types\n                }\n            }\n        }\n    }": typeof types.getContentByIdDocument,
 };
 const documents: Documents = {
+    "fragment OptiFormsChoiceElementData on OptiFormsChoiceElement {\n  Label\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n}": types.OptiFormsChoiceElementDataFragmentDoc,
+    "fragment OptiFormsConditionData on OptiFormsCondition {\n  ComparisonOperator\n  ComparisonValue\n}": types.OptiFormsConditionDataFragmentDoc,
+    "fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {\n  ComparisonOperator\n  ComparisonValue\n}": types.OptiFormsConditionPropertyDataFragmentDoc,
+    "fragment OptiFormsDependencyRuleData on OptiFormsDependencyRule {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}": types.OptiFormsDependencyRuleDataFragmentDoc,
+    "fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}": types.OptiFormsDependencyRulePropertyDataFragmentDoc,
+    "fragment OptiFormsNumberElementData on OptiFormsNumberElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}": types.OptiFormsNumberElementDataFragmentDoc,
+    "fragment OptiFormsRangeElementData on OptiFormsRangeElement {\n  Label\n  Tooltip\n  PredefinedValue\n  Min\n  Max\n  Increment\n}": types.OptiFormsRangeElementDataFragmentDoc,
+    "fragment OptiFormsResetElementData on OptiFormsResetElement {\n  Label\n  Tooltip\n}": types.OptiFormsResetElementDataFragmentDoc,
+    "fragment OptiFormsSelectionElementData on OptiFormsSelectionElement {\n  Label\n  Placeholder\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n  AutoComplete\n}": types.OptiFormsSelectionElementDataFragmentDoc,
+    "fragment OptiFormsSubmitElementData on OptiFormsSubmitElement {\n  Label\n  Tooltip\n}": types.OptiFormsSubmitElementDataFragmentDoc,
+    "fragment OptiFormsTextareaElementData on OptiFormsTextareaElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}": types.OptiFormsTextareaElementDataFragmentDoc,
+    "fragment OptiFormsTextboxElementData on OptiFormsTextboxElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}": types.OptiFormsTextboxElementDataFragmentDoc,
+    "fragment OptiFormsUrlElementData on OptiFormsUrlElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n}": types.OptiFormsUrlElementDataFragmentDoc,
+    "fragment ThuyBlockData on ThuyBlock {\n  empty: _metadata {\n    key\n  }\n}": types.ThuyBlockDataFragmentDoc,
+    "fragment ThuySectionData on ThuySection {\n  Name\n  Body {\n    json\n    html\n  }\n}": types.ThuySectionDataFragmentDoc,
+    "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}": types.BlankExperienceDataFragmentDoc,
+    "fragment ImageMediaData on ImageMedia {\n  empty: _metadata {\n    key\n  }\n}": types.ImageMediaDataFragmentDoc,
+    "fragment GenericMediaData on GenericMedia {\n  empty: _metadata {\n    key\n  }\n}": types.GenericMediaDataFragmentDoc,
+    "fragment OptiFormsContainerDataData on OptiFormsContainerData {\n  DependencyRules {\n    ...OptiFormsDependencyRulePropertyData\n  }\n  Title\n  Description\n  ShowSummaryMessageAfterSubmission\n  SubmitConfirmationMessage\n  ResetConfirmationMessage\n  SubmitUrl {\n    ...LinkData\n  }\n}": types.OptiFormsContainerDataDataFragmentDoc,
+    "fragment VideoMediaData on VideoMedia {\n  empty: _metadata {\n    key\n  }\n}": types.VideoMediaDataFragmentDoc,
     "fragment IContentData on _IContent\n{\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}\n\nfragment IElementData on _IComponent {\n  _metadata {\n    ...IContentInfo\n  }\n  _type: __typename\n}\n\nfragment ElementData on _IComponent  {\n  ...IElementData\n}\n\nfragment BlockData on _IComponent  {\n  ...IContentData\n}\n\nfragment PageData on _IContent {\n  ...IContentData\n}\n\nfragment LinkData on ContentUrl {\n  type\n  base\n  default\n}\n\nfragment ReferenceData on ContentReference {\n  key\n  url {\n    ...LinkData\n  }\n}\n\nfragment IContentInfo on IContentMetadata {\n  key\n  locale\n  types\n  displayName\n  version\n  url {\n    ...LinkData\n  }\n}\n\nfragment IContentListItem on _IContent {\n  ...IContentData\n}\n\nfragment ExperienceData on _IExperience {\n  composition {\n    # Experience level\n    ...CompositionNodeData\n    nodes {\n      # Section level\n      ...CompositionNodeData\n      ... on ICompositionStructureNode {\n        nodes {\n          # Row level\n          ...CompositionNodeData\n          ... on ICompositionStructureNode {\n            nodes {\n              # Column level\n              ...CompositionNodeData\n              ... on ICompositionStructureNode {\n                nodes {\n                  # Element level\n                  ...CompositionNodeData\n                  ...CompositionComponentNodeData\n                  ... on ICompositionStructureNode {\n                    nodes {\n                      # Form element level level\n                      ...CompositionNodeData\n                      ...CompositionComponentNodeData\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n      ...CompositionComponentNodeData\n    }\n  }\n}\n\nfragment CompositionNodeData on ICompositionNode {\n  name: displayName\n  layoutType: nodeType\n  type\n  key\n  template: displayTemplateKey\n  settings: displaySettings {\n    key\n    value\n  }\n}\n\nfragment CompositionComponentNodeData on ICompositionComponentNode {\n  component {\n    ...BlockData\n    ...ElementData\n  }\n}\n\nfragment LinkItemData on Link {\n  title\n  text\n  target\n  url {\n    ...LinkData\n  }\n}": types.IContentDataFragmentDoc,
     "query getContentById($key: String!, $version: String, $locale: [Locales!], $path: String = \"-\", $domain: String, $changeset: String) {\n      content: _Content(\n        variation: { include: ALL }\n        where: {\n          _or: [\n            { _metadata: { key: { eq: $key }, version: { eq: $version } } }\n            {\n              _metadata: {\n                url: { default: { eq: $path }, base: { eq: $domain } }\n                version: { eq: $version }\n              }\n            }\n          ]\n          _metadata: { changeset: { eq: $changeset } }\n        }\n        locale: $locale\n      ) {\n        total\n        items: item {\n          ...IContentData\n          ...BlockData\n          ...PageData\n        }\n      }\n    }\n\nquery getContentByPath($path: [String!]!, $locale: [Locales!], $siteId: String, $changeset: String = null) {\n      content: _Content(\n        where: {\n          _metadata: {\n            url: { default: { in: $path }, base: { eq: $siteId } }\n            changeset: { eq: $changeset }\n          }\n        }\n        locale: $locale\n      ) {\n        total\n        items: item {\n          ...IContentData\n          ...PageData\n        }\n      }\n    }\n\nquery getContentType($key: String!, $version: String, $locale: [Locales!], $path: String = \"-\", $domain: String) {\n        content: _Content(\n            variation: { include: ALL }\n            where: {\n                _or: [\n                    { _metadata: { key: { eq: $key }, version: { eq: $version } } }\n                    { _metadata: { url: { hierarchical: { eq: $path }, base: { eq: $domain } }, version: { eq: $version } } }\n                ]\n            }\n            locale: $locale\n        ) {\n            total\n            items: item {\n                _metadata {\n                    types\n                }\n            }\n        }\n    }": types.getContentByIdDocument,
 };
@@ -36,6 +76,86 @@ const documents: Documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsChoiceElementData on OptiFormsChoiceElement {\n  Label\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n}"): (typeof documents)["fragment OptiFormsChoiceElementData on OptiFormsChoiceElement {\n  Label\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsConditionData on OptiFormsCondition {\n  ComparisonOperator\n  ComparisonValue\n}"): (typeof documents)["fragment OptiFormsConditionData on OptiFormsCondition {\n  ComparisonOperator\n  ComparisonValue\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {\n  ComparisonOperator\n  ComparisonValue\n}"): (typeof documents)["fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {\n  ComparisonOperator\n  ComparisonValue\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsDependencyRuleData on OptiFormsDependencyRule {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}"): (typeof documents)["fragment OptiFormsDependencyRuleData on OptiFormsDependencyRule {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}"): (typeof documents)["fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {\n  SatisfiedAction\n  ConditionCombination\n  Conditions {\n    ...OptiFormsConditionPropertyData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsNumberElementData on OptiFormsNumberElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}"): (typeof documents)["fragment OptiFormsNumberElementData on OptiFormsNumberElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsRangeElementData on OptiFormsRangeElement {\n  Label\n  Tooltip\n  PredefinedValue\n  Min\n  Max\n  Increment\n}"): (typeof documents)["fragment OptiFormsRangeElementData on OptiFormsRangeElement {\n  Label\n  Tooltip\n  PredefinedValue\n  Min\n  Max\n  Increment\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsResetElementData on OptiFormsResetElement {\n  Label\n  Tooltip\n}"): (typeof documents)["fragment OptiFormsResetElementData on OptiFormsResetElement {\n  Label\n  Tooltip\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsSelectionElementData on OptiFormsSelectionElement {\n  Label\n  Placeholder\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n  AutoComplete\n}"): (typeof documents)["fragment OptiFormsSelectionElementData on OptiFormsSelectionElement {\n  Label\n  Placeholder\n  Tooltip\n  Options\n  AllowMultiSelect\n  Validators\n  AutoComplete\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsSubmitElementData on OptiFormsSubmitElement {\n  Label\n  Tooltip\n}"): (typeof documents)["fragment OptiFormsSubmitElementData on OptiFormsSubmitElement {\n  Label\n  Tooltip\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsTextareaElementData on OptiFormsTextareaElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}"): (typeof documents)["fragment OptiFormsTextareaElementData on OptiFormsTextareaElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsTextboxElementData on OptiFormsTextboxElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}"): (typeof documents)["fragment OptiFormsTextboxElementData on OptiFormsTextboxElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n  AutoComplete\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsUrlElementData on OptiFormsUrlElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n}"): (typeof documents)["fragment OptiFormsUrlElementData on OptiFormsUrlElement {\n  Label\n  Placeholder\n  Tooltip\n  PredefinedValue\n  Validators\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment ThuyBlockData on ThuyBlock {\n  empty: _metadata {\n    key\n  }\n}"): (typeof documents)["fragment ThuyBlockData on ThuyBlock {\n  empty: _metadata {\n    key\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment ThuySectionData on ThuySection {\n  Name\n  Body {\n    json\n    html\n  }\n}"): (typeof documents)["fragment ThuySectionData on ThuySection {\n  Name\n  Body {\n    json\n    html\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}"): (typeof documents)["fragment BlankExperienceData on BlankExperience {\n  ...ExperienceData\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment ImageMediaData on ImageMedia {\n  empty: _metadata {\n    key\n  }\n}"): (typeof documents)["fragment ImageMediaData on ImageMedia {\n  empty: _metadata {\n    key\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment GenericMediaData on GenericMedia {\n  empty: _metadata {\n    key\n  }\n}"): (typeof documents)["fragment GenericMediaData on GenericMedia {\n  empty: _metadata {\n    key\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OptiFormsContainerDataData on OptiFormsContainerData {\n  DependencyRules {\n    ...OptiFormsDependencyRulePropertyData\n  }\n  Title\n  Description\n  ShowSummaryMessageAfterSubmission\n  SubmitConfirmationMessage\n  ResetConfirmationMessage\n  SubmitUrl {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment OptiFormsContainerDataData on OptiFormsContainerData {\n  DependencyRules {\n    ...OptiFormsDependencyRulePropertyData\n  }\n  Title\n  Description\n  ShowSummaryMessageAfterSubmission\n  SubmitConfirmationMessage\n  ResetConfirmationMessage\n  SubmitUrl {\n    ...LinkData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment VideoMediaData on VideoMedia {\n  empty: _metadata {\n    key\n  }\n}"): (typeof documents)["fragment VideoMediaData on VideoMedia {\n  empty: _metadata {\n    key\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

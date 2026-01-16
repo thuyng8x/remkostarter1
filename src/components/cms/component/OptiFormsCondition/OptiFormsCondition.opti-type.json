@@ -1,0 +1,43 @@
+{
+  "key": "OptiFormsCondition",
+  "displayName": "Dependency Condition",
+  "description": "",
+  "baseType": "component",
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [],
+  "properties": {
+    "DependsOnField": {
+      "type": "string",
+      "format": "Guid",
+      "displayName": "DependsOnField",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "ComparisonOperator": {
+      "type": "string",
+      "displayName": "ComparisonOperator",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "ComparisonValue": {
+      "type": "string",
+      "displayName": "ComparisonValue",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    }
+  }
+}

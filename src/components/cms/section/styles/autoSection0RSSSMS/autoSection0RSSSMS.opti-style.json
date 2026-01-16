@@ -1,0 +1,50 @@
+{
+  "key": "autoSection0RSSSMS",
+  "displayName": "Section0 Schinner, Larson and Funk",
+  "baseType": "section",
+  "isDefault": true,
+  "settings": {
+    "padding_exp": {
+      "displayName": "Padding for Section",
+      "editor": "select",
+      "sortOrder": 0,
+      "choices": {
+        "None": {
+          "displayName": "No padding",
+          "sortOrder": 0
+        },
+        "Ten": {
+          "displayName": "10px",
+          "sortOrder": 0
+        },
+        "Twenty": {
+          "displayName": "20px",
+          "sortOrder": 0
+        },
+        "Thirty": {
+          "displayName": "30px",
+          "sortOrder": 0
+        }
+      }
+    },
+    "TEXT_ALIGNMENT_exp": {
+      "displayName": "Text alignment for Section",
+      "editor": "select",
+      "sortOrder": 0,
+      "choices": {
+        "left": {
+          "displayName": "left",
+          "sortOrder": 0
+        },
+        "right": {
+          "displayName": "Right",
+          "sortOrder": 0
+        },
+        "center": {
+          "displayName": "Center",
+          "sortOrder": 0
+        }
+      }
+    }
+  }
+}

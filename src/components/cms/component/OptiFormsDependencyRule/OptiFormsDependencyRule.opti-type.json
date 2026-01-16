@@ -1,0 +1,57 @@
+{
+  "key": "OptiFormsDependencyRule",
+  "displayName": "Dependency Rule",
+  "description": "",
+  "baseType": "component",
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [],
+  "properties": {
+    "TargetElement": {
+      "type": "string",
+      "format": "Guid",
+      "displayName": "TargetElement",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "SatisfiedAction": {
+      "type": "string",
+      "displayName": "SatisfiedAction",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "ConditionCombination": {
+      "type": "string",
+      "displayName": "ConditionCombination",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    },
+    "Conditions": {
+      "type": "array",
+      "displayName": "Conditions",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {},
+      "items": {
+        "type": "component",
+        "contentType": "OptiFormsCondition"
+      }
+    }
+  }
+}
