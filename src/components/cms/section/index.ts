@@ -1,29 +1,18 @@
 // Auto generated dictionary
 // @not-modified => When this line is removed, the "force" parameter of the CLI tool is required to overwrite this file
-import { type ComponentTypeDictionary } from "@remkoj/optimizely-cms-react";
-import OptiFormsContainerDataComponent from "./OptiFormsContainerData";
-import SectionStylesFactory from "./styles";
+import { type ComponentTypeDictionary } from '@remkoj/optimizely-cms-react';
 
-// Prefix entries - if needed
-prefixDictionaryEntries(SectionStylesFactory, "Styles");
+import OptiFormsContainerDataComponent from './OptiFormsContainerData';
+import StylesFactory from './styles';
 
 // Build dictionary
 export const SectionFactory : ComponentTypeDictionary = [
-    { 
-        type: "OptiFormsContainerData", 
-        component: OptiFormsContainerDataComponent 
-    },
-    ...SectionStylesFactory
+  {
+    type: 'OptiFormsContainerData',
+    component: OptiFormsContainerDataComponent
+  },
+  ...StylesFactory
 ];
 
 // Export dictionary
 export default SectionFactory;
-
-// Helper functions
-function prefixDictionaryEntries(list: ComponentTypeDictionary, prefix: string) : ComponentTypeDictionary
-{
-    list.forEach((component, idx, dictionary) => {
-        dictionary[idx].type = typeof component.type == 'string' ? prefix + "/" + component.type : [ prefix, ...component.type ]
-    });
-    return list;
-}

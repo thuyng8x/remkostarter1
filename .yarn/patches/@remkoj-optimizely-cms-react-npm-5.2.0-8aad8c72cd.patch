@@ -1,0 +1,13 @@
+diff --git a/dist/components/visual-builder/functions.js b/dist/components/visual-builder/functions.js
+index c7f12d7c5a6331754a8b9df7bdc3f3d48716b227..243f6091c7d6d2df26b3405c97dcea7f8e51b5aa 100644
+--- a/dist/components/visual-builder/functions.js
++++ b/dist/components/visual-builder/functions.js
+@@ -71,7 +71,7 @@ export const defaultNodePropsFactory = (node) => {
+         ['Node']
+     ].filter(isNotNullOrUndefined);
+     const contentLink = { key: node.key ?? '', isInline: true };
+-    const componentData = { __name: node.name };
++    const componentData = { __name: node.name, ...(node.component ?? {}), nodes: node.nodes ?? [] };
+     const layoutData = {
+         type: node.type,
+         layoutType: node.layoutType,

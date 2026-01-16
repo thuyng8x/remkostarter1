@@ -42,6 +42,41 @@ export const IContentDataFragmentDoc = gql`
   _type: __typename
 }
     `;
+export const SectionDataFragmentDoc = gql`
+    fragment SectionData on _IContent {
+  ...IContentData
+}
+    `;
+export const OptiFormsConditionPropertyDataFragmentDoc = gql`
+    fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {
+  ComparisonOperator
+  ComparisonValue
+}
+    `;
+export const OptiFormsDependencyRulePropertyDataFragmentDoc = gql`
+    fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {
+  SatisfiedAction
+  ConditionCombination
+  Conditions {
+    ...OptiFormsConditionPropertyData
+  }
+}
+    `;
+export const OptiFormsContainerDataDataFragmentDoc = gql`
+    fragment OptiFormsContainerDataData on OptiFormsContainerData {
+  DependencyRules {
+    ...OptiFormsDependencyRulePropertyData
+  }
+  Title
+  Description
+  ShowSummaryMessageAfterSubmission
+  SubmitConfirmationMessage
+  ResetConfirmationMessage
+  SubmitUrl {
+    ...LinkData
+  }
+}
+    `;
 export const BlockDataFragmentDoc = gql`
     fragment BlockData on _IComponent {
   ...IContentData
@@ -71,12 +106,6 @@ export const OptiFormsChoiceElementDataFragmentDoc = gql`
     `;
 export const OptiFormsConditionDataFragmentDoc = gql`
     fragment OptiFormsConditionData on OptiFormsCondition {
-  ComparisonOperator
-  ComparisonValue
-}
-    `;
-export const OptiFormsConditionPropertyDataFragmentDoc = gql`
-    fragment OptiFormsConditionPropertyData on OptiFormsConditionProperty {
   ComparisonOperator
   ComparisonValue
 }
@@ -206,6 +235,10 @@ export const ExperienceDataFragmentDoc = gql`
     nodes {
       ...CompositionNodeData
       ... on ICompositionStructureNode {
+        component {
+          ...SectionData
+          ...OptiFormsContainerDataData
+        }
         nodes {
           ...CompositionNodeData
           ... on ICompositionStructureNode {
@@ -248,30 +281,6 @@ export const GenericMediaDataFragmentDoc = gql`
     fragment GenericMediaData on GenericMedia {
   empty: _metadata {
     key
-  }
-}
-    `;
-export const OptiFormsDependencyRulePropertyDataFragmentDoc = gql`
-    fragment OptiFormsDependencyRulePropertyData on OptiFormsDependencyRuleProperty {
-  SatisfiedAction
-  ConditionCombination
-  Conditions {
-    ...OptiFormsConditionPropertyData
-  }
-}
-    `;
-export const OptiFormsContainerDataDataFragmentDoc = gql`
-    fragment OptiFormsContainerDataData on OptiFormsContainerData {
-  DependencyRules {
-    ...OptiFormsDependencyRulePropertyData
-  }
-  Title
-  Description
-  ShowSummaryMessageAfterSubmission
-  SubmitConfirmationMessage
-  ResetConfirmationMessage
-  SubmitUrl {
-    ...LinkData
   }
 }
     `;
@@ -343,6 +352,9 @@ ${ThuySectionDataFragmentDoc}
 ${BlankExperienceDataFragmentDoc}
 ${ExperienceDataFragmentDoc}
 ${CompositionNodeDataFragmentDoc}
+${SectionDataFragmentDoc}
+${OptiFormsContainerDataDataFragmentDoc}
+${OptiFormsDependencyRulePropertyDataFragmentDoc}
 ${CompositionComponentNodeDataFragmentDoc}
 ${ElementDataFragmentDoc}
 ${IElementDataFragmentDoc}`;
@@ -367,6 +379,10 @@ ${PageDataFragmentDoc}
 ${BlankExperienceDataFragmentDoc}
 ${ExperienceDataFragmentDoc}
 ${CompositionNodeDataFragmentDoc}
+${SectionDataFragmentDoc}
+${OptiFormsContainerDataDataFragmentDoc}
+${OptiFormsDependencyRulePropertyDataFragmentDoc}
+${OptiFormsConditionPropertyDataFragmentDoc}
 ${CompositionComponentNodeDataFragmentDoc}
 ${BlockDataFragmentDoc}
 ${ElementDataFragmentDoc}
@@ -374,7 +390,6 @@ ${IElementDataFragmentDoc}
 ${OptiFormsChoiceElementDataFragmentDoc}
 ${OptiFormsConditionDataFragmentDoc}
 ${OptiFormsDependencyRuleDataFragmentDoc}
-${OptiFormsConditionPropertyDataFragmentDoc}
 ${OptiFormsNumberElementDataFragmentDoc}
 ${OptiFormsRangeElementDataFragmentDoc}
 ${OptiFormsResetElementDataFragmentDoc}

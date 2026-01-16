@@ -1,0 +1,24 @@
+diff --git a/dist/documents/fragments.cms13.js b/dist/documents/fragments.cms13.js
+index ecc3a92c037cc088dcbf9d487f1cdf2b45b1e5f5..0b46dc86be32c8a4013348d5b9b76ac9da6ceaf0 100644
+--- a/dist/documents/fragments.cms13.js
++++ b/dist/documents/fragments.cms13.js
+@@ -23,6 +23,9 @@ exports.default = [
+     `fragment PageData on _IContent {
+   ...IContentData
+ }`,
++    `fragment SectionData on _IContent {
++  ...IContentData
++ }`,
+     `fragment LinkData on ContentUrl {
+   type
+   base
+@@ -55,6 +58,9 @@ exports.default = [
+       # Section level
+       ...CompositionNodeData
+       ... on ICompositionStructureNode {
++        component {
++          ...SectionData
++        }
+         nodes {
+           # Row level
+           ...CompositionNodeData
