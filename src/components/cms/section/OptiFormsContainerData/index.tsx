@@ -15,7 +15,6 @@ import { colors } from "chalk";
 export const OptiFormsContainerDataSection: CmsComponent<
    OptiFormsContainerDataDataFragment
 > = ({ data, editProps, children }) => {
-   console.dir(data, { depth: null, colors: true });
    const componentName = "Form Container";
    const componentInfo =
       "A structured block to manage form elements on a page.";
